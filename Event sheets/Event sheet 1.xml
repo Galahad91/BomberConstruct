@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>Event sheet 1</name>
     <events>
+        <variable constant="0" name="FlameDistance" sid="984554621852334" static="0" type="number">64</variable>
         <variable constant="1" name="DIR_RIGHT" sid="8836484733350074" static="0" type="number">0</variable>
         <variable constant="1" name="DIR_DOWN" sid="1208135395666258" static="0" type="number">90</variable>
         <variable constant="1" name="DIR_LEFT" sid="234452395246633" static="0" type="number">180</variable>
@@ -21,7 +22,7 @@
                     <sub-events>
                         <event-block sid="7588265784743923">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="6032217289689541" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="6032217289689541" type="Keyboard">
                                     <param id="0" name="Key">65 (A)</param>
                                 </condition>
                             </conditions>
@@ -38,7 +39,7 @@
                         </event-block>
                         <event-block sid="2921724858517197">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="5032064801520685" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="5032064801520685" type="Keyboard">
                                     <param id="0" name="Key">68 (D)</param>
                                 </condition>
                             </conditions>
@@ -55,7 +56,7 @@
                         </event-block>
                         <event-block sid="3934869760536135">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="9469798447041749" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="9469798447041749" type="Keyboard">
                                     <param id="0" name="Key">83 (S)</param>
                                 </condition>
                             </conditions>
@@ -72,7 +73,7 @@
                         </event-block>
                         <event-block sid="2499034491979519">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="6626781436589314" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="6626781436589314" type="Keyboard">
                                     <param id="0" name="Key">87 (W)</param>
                                 </condition>
                             </conditions>
@@ -84,6 +85,28 @@
                                 <action id="4" name="Set animation" sid="7214880670575552" type="Bman_F_f">
                                     <param id="0" name="Animation">&quot;Up&quot;</param>
                                     <param id="1" name="From">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="476399222120535">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="388674393664749" type="Keyboard">
+                                    <param id="0" name="Key">69 (E)</param>
+                                </condition>
+                                <condition id="-6" name="Every X seconds" sid="759781982823902" type="System">
+                                    <param id="0" name="Interval (seconds)">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="213157682939627" type="Bman_F_f">
+                                    <param id="0" name="Object">Sprite3</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action behavior="Timer" id="0" name="Start timer" sid="159302220692289" type="Sprite3">
+                                    <param id="0" name="Duration">3</param>
+                                    <param id="1" name="Type">0</param>
+                                    <param id="2" name="Tag">&quot;bomb&quot;</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -105,7 +128,7 @@
                     <sub-events>
                         <event-block sid="4394140011896078">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="1816090083037557" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="1816090083037557" type="Keyboard">
                                     <param id="0" name="Key">37 (Left arrow)</param>
                                 </condition>
                             </conditions>
@@ -122,7 +145,7 @@
                         </event-block>
                         <event-block sid="8182432095510698">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="2830000045613736" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="2830000045613736" type="Keyboard">
                                     <param id="0" name="Key">39 (Right arrow)</param>
                                 </condition>
                             </conditions>
@@ -139,7 +162,7 @@
                         </event-block>
                         <event-block sid="6012424973478292">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="3218641420427678" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="3218641420427678" type="Keyboard">
                                     <param id="0" name="Key">40 (Down arrow)</param>
                                 </condition>
                             </conditions>
@@ -156,7 +179,7 @@
                         </event-block>
                         <event-block sid="2651018579857695">
                             <conditions>
-                                <condition id="2" name="Key is down" sid="6355282291491782" type="Keyboard">
+                                <condition id="0" name="On key pressed" sid="6355282291491782" type="Keyboard">
                                     <param id="0" name="Key">38 (Up arrow)</param>
                                 </condition>
                             </conditions>
@@ -171,12 +194,60 @@
                                 </action>
                             </actions>
                         </event-block>
+                        <event-block sid="390339393310898">
+                            <conditions>
+                                <condition id="2" name="Key is down" sid="863855457749814" type="Keyboard">
+                                    <param id="0" name="Key">96 (0 (tn))</param>
+                                </condition>
+                                <condition id="-6" name="Every X seconds" sid="300669293647611" type="System">
+                                    <param id="0" name="Interval (seconds)">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="199215281429973" type="Bman_F_f">
+                                    <param id="0" name="Object">Sprite3</param>
+                                    <param id="1" name="Layer">1</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action behavior="Timer" id="0" name="Start timer" sid="351337294408139" type="Sprite3">
+                                    <param id="0" name="Duration">3</param>
+                                    <param id="1" name="Type">0</param>
+                                    <param id="2" name="Tag">&quot;bomb&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
                     </sub-events>
                 </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="9454925754595967" title="BombersMovement">
             <sub-events>
+                <event-block sid="2571281648043501">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="1598538763999764" type="Bman_F_f">
+                            <param id="0" name="Object">Sprite2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="5294930193771714" type="Bman_F_f">
+                            <param id="0" name="Instance variable">Direction</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3896659693643956">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="6493537275116424" type="Bman_F_f">
+                            <param id="0" name="Object">Sprite</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="2555129361795694" type="Bman_F_f">
+                            <param id="0" name="Instance variable">Direction</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="1118248523248625">
                     <conditions>
                         <condition id="-7" name="Compare instance variable" sid="7709922142207903" type="Bman_F_f">
@@ -235,31 +306,99 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="3896659693643956">
-            <conditions>
-                <condition id="0" name="On collision with another object" sid="6493537275116424" type="Bman_F_f">
-                    <param id="0" name="Object">Sprite</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-10" name="Set value" sid="2555129361795694" type="Bman_F_f">
-                    <param id="0" name="Instance variable">Direction</param>
-                    <param id="1" name="Value">-1</param>
-                </action>
-            </actions>
-        </event-block>
-        <event-block sid="2571281648043501">
-            <conditions>
-                <condition id="0" name="On collision with another object" sid="1598538763999764" type="Sprite2">
-                    <param id="0" name="Object">Sprite2</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-10" name="Set value" sid="5294930193771714" type="Bman_F_f">
-                    <param id="0" name="Instance variable">Direction</param>
-                    <param id="1" name="Value">-1</param>
-                </action>
-            </actions>
-        </event-block>
+        <event-group description="" sid="538355201307900" title="BombBehavior">
+            <sub-events>
+                <event-block sid="690854956567317">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="487744170657719" type="Sprite4">
+                            <param id="0" name="Object">Sprite</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="773995744447262" type="Sprite4" />
+                    </actions>
+                </event-block>
+                <event-block sid="689631100401314">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="721581371412635" type="Sprite4">
+                            <param id="0" name="Object">Bman_F_f</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="498057756910698" type="Bman_F_f" />
+                    </actions>
+                </event-block>
+                <event-block sid="820251001773003">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="288778202790586" type="Sprite2">
+                            <param id="0" name="Object">Sprite4</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="880348726614091" type="Sprite2" />
+                    </actions>
+                </event-block>
+                <event-block sid="676430906071504">
+                    <conditions>
+                        <condition behavior="Timer" id="0" name="On timer" sid="437332681123826" type="Sprite3">
+                            <param id="0" name="Tag">&quot;bomb&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="185300412671100" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X+FlameDistance</param>
+                            <param id="3" name="Y">Sprite3.Y</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="415691841852523" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X</param>
+                            <param id="3" name="Y">Sprite3.Y + FlameDistance</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="383690602502461" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X - FlameDistance</param>
+                            <param id="3" name="Y">Sprite3.Y</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="152317176468401" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X</param>
+                            <param id="3" name="Y">Sprite3.Y - FlameDistance</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="935474419924945" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X</param>
+                            <param id="3" name="Y">Sprite3.Y</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="469753967234717" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="975867132417391" type="Sprite3" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="385482324414529" title="PowerUp">
+            <sub-events>
+                <event-block sid="481588738852501">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="599158560967357" type="Bman_F_f">
+                            <param id="0" name="Object">Sprite5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="331016954175750" type="Bman_F_f">
+                            <param id="0" name="Instance variable">FlamePlus</param>
+                            <param id="1" name="Value">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
     </events>
 </c2eventsheet>
