@@ -235,5 +235,31 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-block sid="3896659693643956">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="6493537275116424" type="Bman_F_f">
+                    <param id="0" name="Object">Sprite</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="2555129361795694" type="Bman_F_f">
+                    <param id="0" name="Instance variable">Direction</param>
+                    <param id="1" name="Value">-1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="2571281648043501">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="1598538763999764" type="Sprite2">
+                    <param id="0" name="Object">Sprite2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-10" name="Set value" sid="5294930193771714" type="Bman_F_f">
+                    <param id="0" name="Instance variable">Direction</param>
+                    <param id="1" name="Value">-1</param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>
