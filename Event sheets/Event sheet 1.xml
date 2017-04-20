@@ -204,10 +204,11 @@
                                 </condition>
                             </conditions>
                             <actions>
-                                <action id="0" name="Spawn another object" sid="199215281429973" type="Bman_F_f">
-                                    <param id="0" name="Object">Sprite3</param>
+                                <action id="-3" name="Create object" sid="199215281429973" type="System">
+                                    <param id="0" name="Object to create">Sprite3</param>
                                     <param id="1" name="Layer">1</param>
-                                    <param id="2" name="Image point">0</param>
+                                    <param id="2" name="X">int(Bman_F_f.ImagePointX(0)/64)*64+32</param>
+                                    <param id="3" name="Y">int(Bman_F_f.ImagePointY(0)/64)*64+32</param>
                                 </action>
                                 <action behavior="Timer" id="0" name="Start timer" sid="351337294408139" type="Sprite3">
                                     <param id="0" name="Duration">3</param>
@@ -286,7 +287,7 @@
                     </conditions>
                     <actions>
                         <action id="-2" name="Set Y" sid="6757339046221092" type="Bman_F_f">
-                            <param id="0" name="Y">Self.Y - Self.Speed * dt</param>
+                            <param id="0" name="Y">Self.Y- Self.Speed * dt</param>
                         </action>
                     </actions>
                 </event-block>
@@ -306,6 +307,21 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-block sid="188395693333551">
+            <conditions>
+                <condition id="-7" name="Compare instance variable" sid="988202455850631" type="Bman_F_f">
+                    <param id="0" name="Instance variable">Direction</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">-1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Set position" sid="984681316588933" type="Bman_F_f">
+                    <param id="0" name="X">int(Self.X/64)*64+32</param>
+                    <param id="1" name="Y">int(Self.Y/64)*64+32</param>
+                </action>
+            </actions>
+        </event-block>
         <event-group description="" sid="538355201307900" title="BombBehavior">
             <sub-events>
                 <event-block sid="690854956567317">
@@ -381,6 +397,58 @@
                         <action id="-9" name="Destroy" sid="975867132417391" type="Sprite3" />
                     </actions>
                 </event-block>
+                <event-block sid="176458245765898">
+                    <conditions>
+                        <condition behavior="Timer" id="0" name="On timer" sid="501830209069786" type="Sprite3">
+                            <param id="0" name="Tag">&quot;bomb&quot;</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="101442554103524" type="Bman_F_f">
+                            <param id="0" name="Instance variable">FlamePlus</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="608856266692828" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X+(FlameDistance*2)</param>
+                            <param id="3" name="Y">Sprite3.Y</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="672552765403860" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X</param>
+                            <param id="3" name="Y">Sprite3.Y + (FlameDistance*2)</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="741509398227383" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X - (FlameDistance*2)</param>
+                            <param id="3" name="Y">Sprite3.Y</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="387325698140942" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X</param>
+                            <param id="3" name="Y">Sprite3.Y - (FlameDistance*2)</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="385258870754176" type="System">
+                            <param id="0" name="Object to create">Sprite4</param>
+                            <param id="1" name="Layer">1</param>
+                            <param id="2" name="X">Sprite3.X</param>
+                            <param id="3" name="Y">Sprite3.Y</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="134385748562419" type="System">
+                            <param id="0" name="Seconds">1</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="374951588442272" type="Sprite3" />
+                        <action id="-12" name="Subtract from" sid="485860292593796" type="Bman_F_f">
+                            <param id="0" name="Instance variable">FlamePlus</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                </event-block>
             </sub-events>
         </event-group>
         <event-group description="" sid="385482324414529" title="PowerUp">
@@ -392,10 +460,11 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="-11" name="Add to" sid="331016954175750" type="Bman_F_f">
+                        <action id="-10" name="Set value" sid="331016954175750" type="Bman_F_f">
                             <param id="0" name="Instance variable">FlamePlus</param>
                             <param id="1" name="Value">3</param>
                         </action>
+                        <action id="-9" name="Destroy" sid="674173158776474" type="Sprite5" />
                     </actions>
                 </event-block>
             </sub-events>
